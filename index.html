@@ -25,44 +25,39 @@
 </head>
 <body>
   <div class="container">
-    <!-- Heading -->
-    <div class="row">
-      <div class="twelve columns">
-        <h1 class="heading">Graphic Design History</h1>
+    <div class="twelve columns">
+      <h1 class="game-title">Graphic Design History</h1>
+      <div id="button-container">
+        <!-- A button that starts the game -->
+        <button class="u-full-width" id="start-button">Start</button>
       </div>
-    </div>
-    <!-- Score Section -->
-    <div class="row">
-      <div class="six columns section-background">
-        <div id="score-section">
-          <h3 class="section-heading">SCORE</h3>
-          <hr class="section-hr">
-          <p id="score"><!-- the user's score is put here -->0</p>
-        </div>
+      <!-- Area where the questions and time remaining will be displayed -->
+      <div id="time-remaining">
+        <!-- <h3 class='time-displayed'> ... </h3> -->
+        <!-- <hr> -->
       </div>
-      <!-- Time Remaining Section -->
-      <div class="six columns section-background">
-        <div id="time-section">
-          <h3 class="section-heading">TIME REMAINING</h3>
-          <hr class="section-hr">
-          <p id="time"><!-- the time remaining is put here -->0:00</p>
-        </div>
+      <div id="question">
+        <!-- <h2 class="question-displayed"> ... </h2> -->
+        <!-- <img src="" alt="" class='u-full-width'> -->
+        <!-- <hr> -->
       </div>
-    </div>
-    <!-- Question Section -->
-    <div class="row">
-      <div class="twelve columns">
-        <h3 id="questions"><!-- question to answer is put here <-->Lorem ipsum dolor sit amet consectetur adipisicing elit?</--></h3>
+      <div id="message">
+        <!-- <p class="message-displayed"> ... </p> -->
       </div>
-    </div>
-    <!-- Answer Section -->
-    <div class="row">
-      <div class="twelve columns">
-        <hr>
-        <p id="answer-item">Lorem</p>
-        <p id="answer-item">Ipsum</p>
-        <p id="answer-item">Dolar</p>
-        <p id="answer-item">Amet</p>
+      <div id="answers">
+        <!-- <button class="u-full-width wrong-guess" id="A"></button> -->
+        <!-- <button class="u-full-width correct-answer" id="B"></button> -->
+        <!-- <button class="u-full-width" id="C"></button> -->
+        <!-- <button class="u-full-width" id="D"></button> -->
+      </div>
+      <!-- This area appears when the user finishes the game -->
+      <div id="score">
+        <!-- <h2 class="score-displayed">Score Card</h2> -->
+        <!-- <hr> -->
+        <!-- <p class="score-displayed" id="correct-guesses"></p> -->
+        <!-- <p class="score-displayed" id="wrong-guesses"></p> -->
+        <!-- <p class="score-displayed" id="unanswered-guesses"></p> -->
+        <!-- <button class="u-full-width" id="start-button">New Game</button> -->
       </div>
     </div>
   </div>
