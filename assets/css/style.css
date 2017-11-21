@@ -1,90 +1,82 @@
 /*== TYPOGRAPHY =====================================================*/
-.heading {
+.game-title {
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   text-align: center;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
   font-size: 6em;
-  font-weight: 200;
-  letter-spacing: 0.01em;
+  font-weight: 100;
+  letter-spacing: 0.03em;
+}
+
+.time-displayed {
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
+  text-align: center;
+  letter-spacing: 0.03em;
   color: #515151;
 }
 
-.section-heading {
+.question-displayed {
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
   text-align: center;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  font-size: 1em;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #fff;
-}
-
-#score {
-  text-align: center;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  font-size: 1em;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #fff;
-}
-
-#time {
-  text-align: center;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  font-size: 1em;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #fff;
-}
-
-#questions {
-  text-align: center;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  font-size: 2.5em;
-  font-weight: 500;
+  letter-spacing: 0.03em;
   color: #515151;
 }
 
-#answer-item {
+.message-displayed {
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   text-align: center;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  font-size: 1.75em;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.score-header {
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
+  text-align: center;
+  letter-spacing: 0.03em;
   color: #515151;
+}
+
+.score-displayed {
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.5em;
 }
 
 /*== STYLES =========================================================*/
 body {
-  background-color:
+  background-image:
 }
 
 .container {
-  background-color: #efefef;
-  padding: 40px;
+  background-color: #ededed;
+  padding: 20px;
 }
 
-.heading {
-  margin-bottom: 150px;
+.game-title {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
-.section-background {
+button:hover {
   background-color: #515151;
-  border-radius: 10px;
-  padding: 5px 40px;
-  margin-bottom: 150px;
+  color: #fff;
 }
 
-.section-heading {
-  margin-bottom: 5px;
+/*Incorrect guess*/
+button.wrong-guess {
+  border: 2px solid #f1472d;
 }
 
-.section-hr {
-  margin-top: 5px;
-  margin-bottom: 10px;
+/*correct guess*/
+
+button.correct-answer {
+  border: 2px solid #3ee179;
 }
 
-#score {
-  margin-bottom: 5px;
-}
-
-#time {
-  margin-bottom: 5px;
+hr {
+  border: .03em solid #515151;
 }
