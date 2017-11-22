@@ -145,12 +145,16 @@ $(document).ready(function() {
   ];
 
   //create a variable that stores the index of the questionArray
-  var questionIndex;
+  var questionIndex = 0;
 
   //score keeping
   var correct = 0;
   var wrong = 0;
   var unanswered = 0;
+
+  //stores the time for the timer() function
+  var seconds = 15;
+  var intervalId;
 
   //user guess
   var userGuess;
@@ -158,6 +162,7 @@ $(document).ready(function() {
   //stores the messages that display upon a user's guess
   var correctMessage = "Correct!";
   var wrongMessage = "Nah, dude. That's not the right answer";
+  var outOfTime = "Out of time!";
 
   // == FUNCTIONS =============================================================
 
@@ -176,10 +181,12 @@ $(document).ready(function() {
     console.log("Start button clears");//debugging
     //remove the start button
     $("#button-container").empty();
-    //set the index to the question array to 0
-    questionIndex = 0;
-    //display the time reamaining
-
+    $("#time-remaining").empty();
+    $("#question").empty();
+    $("#answers").empty();
+    $("#message").empty();
+    //display the time reamaining using the timer() function
+    timer();
     //display the question at the current index
     $("#question").append('<h2 class="question-displayed">' + questionArray[questionIndex].question + '</h2>');
     //display the image associated with the question and display a horizontal rule
@@ -192,12 +199,78 @@ $(document).ready(function() {
       var answerButtons = $("<button>");
       //insert the possible answers from the question object
       answerButtons.text(questionArray[questionIndex].possibleAnswers[i]);
-      answerButtons.addClass("u-full-width")
+      answerButtons.attr({"data-answer-index": i});
+      answerButtons.addClass("u-full-width user-guess");
       //append the buttons to the #answers div
-      $("#answers").append(answerButtons)
+      $("#answers").append(answerButtons);
+    }
+    //detect a user's guess upon a button click
+    $(".user-guess").click(function(){
+      //get the specific index of that answer and save it to the userGuess variable
+      userGuess = $(this).data('answer-index');
+      //stop the timer
+      clearInterval(intervalId);
+      console.log(userGuess);//debugging
+      //display the correct answer using the displayAnswer() function
+      displayAnswer();
+    });
+  }
+  //a function that counts down from 25 in one second intervals
+  function timer() {
+      intervalId = setInterval(function() {
+        //decrease the seconds by one every second
+        seconds--;
+        //adds an h3 element that displays the current seconds remaining to guess
+        $("#time-remaining").html("<h3 class='time-displayed'>Time Remaining: " + seconds + " seconds</h3>");
+        console.log("Time is being displayed"); //debugging
+        //stops the interval when the value of seconds reaches 0
+        if(seconds < 1) {
+          clearInterval(intervalId);
+          displayAnswer();
+        }
+      }, 1000);
+  }
+
+  //a function that displays the correct answer
+  function displayAnswer() {
+    //create a variable that stores the current answer index
+    var answerIndex = questionArray[questionIndex].correctAnswer;
+    //an if statement that checks to see if the user's guess is the same as the answer index
+    if(userGuess === answerIndex) {
+      //add one to the correct score variable
+      correct++;
+      console.log("Correct!"); //debugging
+      //display the correct answer
+      $(".user-guess").addClass("u-full-width user-guess correct-guess");
+      //display a message below the question image
+      $("#message").html("<p class='message-displayed'>" + correctMessage + "</p>");
+      //...else if the user's guess doesn't match add one to the incorrect score variable
+    } else if(userGuess !== answerIndex) {
+      wrong++;
+      console.log("Wrong!"); //debugging
+      //display a message below the question image
+      $("#message").html("<p class='message-displayed'>" + wrongMessage + "</p>");
+      //...else if the user doesn't guess anything, then add one to the unanswered score variable
+    } else {
+      unanswered++;
+      console.log("No Answer!"); //debugging
+      //display a message below the question image
+      $("#message").html("<p class='message-displayed'>" + outOfTime + "</p>");
     }
 
+    //an if statement that goes on to the next question in the array
+    if(questionIndex === (questionArray.length-1)) {
+      //setTimeOut() to delay the display of the score screen
+      console.log("End of game"); //debugging
+    //...else move on to the next question
+    } else {
+      questionIndex++;
+      //delay displaying the next question by 5 seconds
+      setTimeout(displayQuestions, 1000 * 5);
+    }
   }
+
+  // == MAIN PROCESSES ========================================================
 
   $("#start-button").click(function() {
     startNewGame();
