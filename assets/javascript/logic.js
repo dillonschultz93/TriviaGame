@@ -70,7 +70,7 @@ $(document).ready(function() {
 
   var questionSix = {
     question: "Who designed this poster?",
-    image: "<img src='assests/images/saul-bass-poster.jpg' class='u-full-width'>",
+    image: "<img src='assets/images/saul-bass-poster.jpg' alt='Anatomy of a murdered poster' class='u-full-width'>",
     possibleAnswers: [
       "A. Deiter Rams",
       "B. Andy Warhol",
@@ -82,7 +82,7 @@ $(document).ready(function() {
 
   var questionSeven = {
     question: "Who designed the typeface called Garamond?",
-    image: "<img src='assests/images/garamond.jpg' class='u-full-width'>",
+    image: "<img src='assets/images/garamond.jpg' alt='Garamond type speciman' class='u-full-width'>",
     possibleAnswers: [
       "A. Nicolas Jenson",
       "B. Claude Garamond",
@@ -176,6 +176,7 @@ $(document).ready(function() {
     //run the displayQuestions() function
     displayQuestions();
   }
+
   //a function that displays the current question
   function displayQuestions() {
     console.log("Start button clears");//debugging
@@ -215,6 +216,7 @@ $(document).ready(function() {
       displayAnswer();
     });
   }
+
   //a function that counts down from 25 in one second intervals
   function timer() {
       intervalId = setInterval(function() {
@@ -265,8 +267,10 @@ $(document).ready(function() {
     //...else move on to the next question
     } else {
       questionIndex++;
-      //delay displaying the next question by 5 seconds
-      setTimeout(displayQuestions, 1000 * 5);
+      //delay displaying the next question by 3 seconds
+      setTimeout(displayQuestions, 1000 * 3);
+      //set the time back to 15 seconds
+      seconds = 15;
     }
   }
 
