@@ -17,8 +17,8 @@
 .question-displayed {
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   font-weight: 400;
-  font-size: 3em;
-  text-align: center;
+  font-size: 2em;
+  text-align: left;
   letter-spacing: 0.03em;
   color: #515151;
 }
@@ -47,9 +47,9 @@
 }
 
 /*== STYLES =========================================================*/
-body {
-  background-image:
-}
+/*body {
+  background-image: url(../assets/images/drips.jpg);
+}*/
 
 .container {
   background-color: #ededed;
