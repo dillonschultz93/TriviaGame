@@ -94,7 +94,7 @@ $(document).ready(function() {
 
   var questionEight = {
     question: "This image is an example of what kind of communication?",
-    image: "<img src='assests/images/ideograms.gif' class='u-full-width'>",
+    image: "<img src='assets/images/ideograms.png' alt='ideogram example' class='u-full-width'>",
     possibleAnswers: [
       "A. Pictograms",
       "B. Alphabet",
@@ -106,7 +106,7 @@ $(document).ready(function() {
 
   var questionNine = {
     question: "Who designed the typeface called Helvetica?",
-    image: "<img src='assests/images/helvetica.jpg' class='u-full-width'>",
+    image: "<img src='assets/images/helvetica.jpg' alt='Helvetica type speciman' class='u-full-width'>",
     possibleAnswers: [
       "A. Adrian Frutiger",
       "B. Paul Renner",
@@ -118,7 +118,7 @@ $(document).ready(function() {
 
   var questionTen = {
     question: "Who designed this logo?",
-    image: "<img src='assests/images/IBM-logo.jpg' class='u-full-width'>",
+    image: "<img src='assets/images/IBM-logo.jpg' alt='IBM logo' class='u-full-width'>",
     possibleAnswers: [
       "A. Paul Rand",
       "B. Milton Glaser",
@@ -164,6 +164,9 @@ $(document).ready(function() {
   var wrongMessage = "Nah, dude. That's not the right answer";
   var outOfTime = "Out of time!";
 
+  //stores a boolean value if the question was answered or not
+  var answered;
+
   // == FUNCTIONS =============================================================
 
   function startNewGame() {
@@ -184,6 +187,7 @@ $(document).ready(function() {
     $("#button-container").empty();
     $("#time-remaining").empty();
     $("#question").empty();
+    $("#images").empty();
     $("#answers").empty();
     $("#message").empty();
     //display the time reamaining using the timer() function
@@ -191,8 +195,7 @@ $(document).ready(function() {
     //display the question at the current index
     $("#question").append('<h2 class="question-displayed">' + questionArray[questionIndex].question + '</h2>');
     //display the image associated with the question and display a horizontal rule
-    $("#question").append(questionArray[questionIndex].image);
-    $("#question").append('<hr>');
+    $("#images").append(questionArray[questionIndex].image);
     console.log("Question and image are displayed"); //debugging
     //display the answers associated with the question using a for loop
     for(var i = 0; i < questionArray[questionIndex].possibleAnswers.length; i++) {
@@ -213,6 +216,7 @@ $(document).ready(function() {
       clearInterval(intervalId);
       console.log(userGuess);//debugging
       //display the correct answer using the displayAnswer() function
+      answered = true;
       displayAnswer();
     });
   }
@@ -238,32 +242,32 @@ $(document).ready(function() {
     //create a variable that stores the current answer index
     var answerIndex = questionArray[questionIndex].correctAnswer;
     //an if statement that checks to see if the user's guess is the same as the answer index
-    if(userGuess === answerIndex) {
+    if((userGuess === answerIndex) && (answered === true)) {
       //add one to the correct score variable
       correct++;
       console.log("Correct!"); //debugging
-      //display the correct answer
-      $(".user-guess").addClass("u-full-width user-guess correct-guess");
       //display a message below the question image
       $("#message").html("<p class='message-displayed'>" + correctMessage + "</p>");
       //...else if the user's guess doesn't match add one to the incorrect score variable
-    } else if(userGuess !== answerIndex) {
+    } else if((userGuess !== answerIndex) && (answered === true)) {
       wrong++;
       console.log("Wrong!"); //debugging
       //display a message below the question image
       $("#message").html("<p class='message-displayed'>" + wrongMessage + "</p>");
       //...else if the user doesn't guess anything, then add one to the unanswered score variable
-    } else {
+    } else if(answered !== true) {
       unanswered++;
       console.log("No Answer!"); //debugging
       //display a message below the question image
       $("#message").html("<p class='message-displayed'>" + outOfTime + "</p>");
     }
-
     //an if statement that goes on to the next question in the array
     if(questionIndex === (questionArray.length-1)) {
       //setTimeOut() to delay the display of the score screen
       console.log("End of game"); //debugging
+      //call the displayScore() function
+      console.log("Display new game"); //debugging
+      setTimeout(displayScore, 1000 * 3);
     //...else move on to the next question
     } else {
       questionIndex++;
@@ -272,6 +276,33 @@ $(document).ready(function() {
       //set the time back to 15 seconds
       seconds = 15;
     }
+  }
+
+  //a function that displays the correct answers visually
+  function displayCorrectAnswer() {
+
+  }
+
+  //a function that displays the score screen at the end of the game
+  function displayScore() {
+    //clear out the time, question, message and answer areas
+    $("#time-remaining").empty();
+    $("#question").empty();
+    $("#images").empty();
+    $("#message").empty();
+    $("#answers").empty();
+    //display the score screen
+    $("#score").html("<h2 class='score-displayed'>Score Card</h2>");
+    $("#score").append("<hr>");
+    $("#score").append("<p class='score-displayed' id='correct-guesses'> Corect guesses: " +correct + "</p>");
+    $("#score").append("<p class='score-displayed' id='wrong-guess'> Incorrect guesses: " + wrong + "</p>");
+    $("#score").append("<p class='score-displayed' id='unanswered-guess'> Unanswered guesses: " + unanswered + "</p>");
+    $("#score").append("<button class='u-full-width' id='start-button'>New Game</button>");
+    $("#start-button").click(function() {
+      questionIndex = 0;
+      seconds = 15;
+      startNewGame();
+    });
   }
 
   // == MAIN PROCESSES ========================================================
