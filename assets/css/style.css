@@ -1,50 +1,50 @@
 /*== TYPOGRAPHY =====================================================*/
 .game-title {
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
-  text-align: center;
   font-size: 5em;
   font-weight: 100;
   letter-spacing: 0.03em;
+  text-align: center;
 }
 
 .time-displayed {
-  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
-  text-align: center;
-  letter-spacing: 0.03em;
   color: #515151;
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
+  letter-spacing: 0.03em;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .question-displayed {
-  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
-  font-weight: 400;
-  font-size: 2em;
-  text-align: left;
-  letter-spacing: 0.03em;
   color: #515151;
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-align: left;
 }
 
 .message-displayed {
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
-  text-align: center;
-  font-weight: 400;
   font-size: 1.5em;
+  font-weight: 400;
+  text-align: center;
 }
 
 .score-header {
-  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
-  font-weight: 400;
-  font-size: 3em;
-  text-align: center;
-  letter-spacing: 0.03em;
   color: #515151;
+  font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
+  font-size: 3em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-align: center;
 }
 
 .score-displayed {
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
-  text-align: center;
-  font-weight: 400;
   font-size: 1.5em;
+  font-weight: 400;
+  text-align: center;
 }
 
 /*== STYLES =========================================================*/
@@ -58,18 +58,20 @@
 
 .card {
   background-color: #ededed;
-  padding: 40px;
   border-radius: 10px;
+  padding: 40px;
 }
 
 .game-title {
-  margin-top: 50px;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .question-displayed {
-  text-align: center;
+  align-content: center;
+  display: flex;
   padding: 20px;
+  text-align: center;
 }
 
 button:hover {
@@ -78,13 +80,13 @@ button:hover {
 }
 
 /*Incorrect guess*/
-button.wrong-guess {
+.wrong-guess {
   border: 2px solid #f1472d;
 }
 
 /*correct guess*/
 
-button.correct-answer {
+.correct-answer {
   border: 2px solid #3ee179;
 }
 
