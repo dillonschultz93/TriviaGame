@@ -2,7 +2,7 @@
 .game-title {
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   text-align: center;
-  font-size: 6em;
+  font-size: 5em;
   font-weight: 100;
   letter-spacing: 0.03em;
 }
@@ -53,13 +53,23 @@
 }*/
 
 .container {
+  padding: 50px;
+}
+
+.card {
   background-color: #ededed;
-  padding: 20px;
+  padding: 40px;
+  border-radius: 10px;
 }
 
 .game-title {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.question-displayed {
+  text-align: center;
+  padding: 20px;
 }
 
 button:hover {
