@@ -160,12 +160,12 @@ $(document).ready(function() {
   var userGuess;
 
   //stores the messages that display upon a user's guess
-  var correctMessage = "Correct!";
-  var wrongMessage = "Nah, dude. That's not the right answer";
-  var outOfTime = "Out of time!";
+  var correctMessage = "CORRECT!";
+  var wrongMessage = "WRONG!";
+  var outOfTime = "OUT OF TIME!";
 
   //stores a boolean value if the question was answered or not
-  var answered;
+  var answered = false;
 
   // == FUNCTIONS =============================================================
 
@@ -174,6 +174,7 @@ $(document).ready(function() {
     correct = 0;
     wrong = 0;
     unanswered = 0;
+    answered = false;
     //empty out the div that contains the score card
     $("#score").empty();
     //run the displayQuestions() function
@@ -245,21 +246,24 @@ $(document).ready(function() {
     if((userGuess === answerIndex) && (answered === true)) {
       //add one to the correct score variable
       correct++;
+      answered = false;
       console.log("Correct!"); //debugging
       //display a message below the question image
-      $("#message").html("<p class='message-displayed'>" + correctMessage + "</p>");
+      $("#message").html("<p class='message-displayed correct'>" + correctMessage + "</p>");
       //...else if the user's guess doesn't match add one to the incorrect score variable
     } else if((userGuess !== answerIndex) && (answered === true)) {
       wrong++;
+      answered = false;
       console.log("Wrong!"); //debugging
       //display a message below the question image
-      $("#message").html("<p class='message-displayed'>" + wrongMessage + "</p>");
+      $("#message").html("<p class='message-displayed wrong'>" + wrongMessage + "</p>");
       //...else if the user doesn't guess anything, then add one to the unanswered score variable
     } else if(answered !== true) {
       unanswered++;
+      answered = false;
       console.log("No Answer!"); //debugging
       //display a message below the question image
-      $("#message").html("<p class='message-displayed'>" + outOfTime + "</p>");
+      $("#message").html("<p class='message-displayed no-answer'>" + outOfTime + "</p>");
     }
     //an if statement that goes on to the next question in the array
     if(questionIndex === (questionArray.length-1)) {
@@ -292,11 +296,11 @@ $(document).ready(function() {
     $("#message").empty();
     $("#answers").empty();
     //display the score screen
-    $("#score").html("<h2 class='score-displayed'>Score Card</h2>");
+    $("#score").html("<h2 class='score-header'>Score Card</h2>");
     $("#score").append("<hr>");
-    $("#score").append("<p class='score-displayed' id='correct-guesses'> Corect guesses: " +correct + "</p>");
-    $("#score").append("<p class='score-displayed' id='wrong-guess'> Incorrect guesses: " + wrong + "</p>");
-    $("#score").append("<p class='score-displayed' id='unanswered-guess'> Unanswered guesses: " + unanswered + "</p>");
+    $("#score").append("<p class='score-displayed correct' id='correct-guesses'> Corect guesses: " +correct + "</p>");
+    $("#score").append("<p class='score-displayed wrong' id='wrong-guess'> Incorrect guesses: " + wrong + "</p>");
+    $("#score").append("<p class='score-displayed no-answer' id='unanswered-guess'> Unanswered guesses: " + unanswered + "</p>");
     $("#score").append("<button class='u-full-width' id='start-button'>New Game</button>");
     $("#start-button").click(function() {
       questionIndex = 0;
