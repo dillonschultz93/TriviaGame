@@ -1,5 +1,6 @@
 /*== TYPOGRAPHY =====================================================*/
 .game-title {
+  color: #fff;
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   font-size: 5em;
   font-weight: 100;
@@ -8,7 +9,7 @@
 }
 
 .time-displayed {
-  color: #515151;
+  color: #fff;
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   letter-spacing: 0.03em;
   margin-bottom: 30px;
@@ -16,7 +17,7 @@
 }
 
 .question-displayed {
-  color: #515151;
+  color: #fff;
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   font-size: 2em;
   font-weight: 400;
@@ -46,7 +47,7 @@
 }
 
 .score-header {
-  color: #515151;
+  color: #fff;
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   font-size: 3em;
   font-weight: 400;
@@ -62,16 +63,24 @@
 }
 
 /*== STYLES =========================================================*/
-/*body {
-  background-image: url(../assets/images/drips.jpg);
-}*/
 
 .container {
   padding: 50px;
 }
 
+.card-background {
+  background-image: url("../../assets/images/drips.jpg");
+  background-size: cover;
+  border-radius: 10px;
+  opacity: 0.75;
+}
+
+.card-overlay {
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 10px;
+}
+
 .card {
-  background-color: #ededed;
   border-radius: 10px;
   padding: 40px;
 }
@@ -86,22 +95,36 @@
   padding: 20px;
 }
 
-button:hover {
-  background-color: #515151;
+#answers {
+  margin-top: 20px;
+}
+
+button {
+  border: 2px solid #fff;
   color: #fff;
 }
 
+button:hover {
+  background-color: #fff;
+  border: 2px solid #fff;
+  color: #000;
+}
+
 /*Incorrect guess*/
-.wrong-guess {
-  border: 2px solid #f1472d;
+button.wrong-guess {
+  background-color: #f1472d;
+  border: none;
+  color: #fff;
 }
 
 /*correct guess*/
 
-.correct-answer {
-  border: 2px solid #3ee179;
+button.correct-answer {
+  background-color: #3ee179;
+  border: none;
+  color: #fff;
 }
 
 hr {
-  border: .03em solid #515151;
+  border: .03em solid #fff;
 }
