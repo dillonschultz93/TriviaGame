@@ -218,28 +218,27 @@ $(document).ready(function() {
       console.log(userGuess);//debugging
       //display the correct answer using the displayAnswer() function
       answered = true;
-      displayAnswer();
+      displayAnswer(this);
     });
   }
 
-  //a function that counts down from 25 in one second intervals
+  //a function that counts down from 15 in one second intervals
   function timer() {
-      intervalId = setInterval(function() {
+      function countDown() {
+        $("#time-remaining").html("<h3 class='time-displayed'>Time Remaining: " + seconds + " seconds</h3>");
         //decrease the seconds by one every second
         seconds--;
-        //adds an h3 element that displays the current seconds remaining to guess
-        $("#time-remaining").html("<h3 class='time-displayed'>Time Remaining: " + seconds + " seconds</h3>");
-        console.log("Time is being displayed"); //debugging
         //stops the interval when the value of seconds reaches 0
         if(seconds < 1) {
           clearInterval(intervalId);
           displayAnswer();
         }
-      }, 1000);
+      } countDown();
+        intervalId = setInterval(countDown, 1000);
   }
 
   //a function that displays the correct answer
-  function displayAnswer() {
+  function displayAnswer(button) {
     //create a variable that stores the current answer index
     var answerIndex = questionArray[questionIndex].correctAnswer;
     //an if statement that checks to see if the user's guess is the same as the answer index
@@ -247,6 +246,7 @@ $(document).ready(function() {
       //add one to the correct score variable
       correct++;
       answered = false;
+      $(button).addClass("correct-answer");
       console.log("Correct!"); //debugging
       //display a message below the question image
       $("#message").html("<p class='message-displayed correct'>" + correctMessage + "</p>");
@@ -254,6 +254,7 @@ $(document).ready(function() {
     } else if((userGuess !== answerIndex) && (answered === true)) {
       wrong++;
       answered = false;
+      $(button).addClass("wrong-guess");
       console.log("Wrong!"); //debugging
       //display a message below the question image
       $("#message").html("<p class='message-displayed wrong'>" + wrongMessage + "</p>");
@@ -280,11 +281,6 @@ $(document).ready(function() {
       //set the time back to 15 seconds
       seconds = 15;
     }
-  }
-
-  //a function that displays the correct answers visually
-  function displayCorrectAnswer() {
-
   }
 
   //a function that displays the score screen at the end of the game
