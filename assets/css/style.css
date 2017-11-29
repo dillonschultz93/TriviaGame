@@ -28,7 +28,21 @@
   font-family: 'Helvetica Neue', 'Arial', 'Courier', sans-serif;
   font-size: 1.5em;
   font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-top: 15px;
   text-align: center;
+}
+
+.correct {
+  color: #3ee179;
+}
+
+.wrong {
+  color: #f1472d;
+}
+
+.no-answer {
+  color: #e2d95c;
 }
 
 .score-header {
@@ -69,9 +83,7 @@
 
 .question-displayed {
   align-content: center;
-  display: flex;
   padding: 20px;
-  text-align: center;
 }
 
 button:hover {
