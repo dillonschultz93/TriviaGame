@@ -243,6 +243,7 @@ $(document).ready(function() {
       //add one to the correct score variable
       correct++;
       answered = false;
+      //visually shows the correct answer
       $(button).addClass("correct-answer");
       //display a message below the question image
       $("#message").html("<p class='message-displayed correct'>" + correctMessage + "</p>");
@@ -250,6 +251,7 @@ $(document).ready(function() {
     } else if((userGuess !== answerIndex) && (answered === true)) {
       wrong++;
       answered = false;
+      //visually shows the wrong and correct answer
       $(button).addClass("wrong-guess");
       //display a message below the question image
       $("#message").html("<p class='message-displayed wrong'>" + wrongMessage + "</p>");
