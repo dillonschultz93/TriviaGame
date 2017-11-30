@@ -70,7 +70,7 @@
 
 .card-background {
   background-image: url("../../assets/images/drips.jpg");
-  background-size: cover;
+  
   border-radius: 10px;
   opacity: 0.75;
 }
